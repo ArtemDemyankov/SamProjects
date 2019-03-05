@@ -19,6 +19,18 @@ public class WorkingWithArrays {
                 case "3":
                     task3();
                     break;
+                case "5":
+                    task5();
+                    break;
+                case "6":
+                    task6();
+                    break;
+                case "7":
+                    task7();
+                    break;
+                case "8":
+                    task8();
+                    break;
                 default:
                     System.out.println("Неизвестный параметр");
             }
@@ -26,6 +38,10 @@ public class WorkingWithArrays {
         //task1();
         //task2();
         //task3();
+        //task5();
+        //task6();
+        //task7();
+        //task8();
     }
 
     private static void task1() {
@@ -88,7 +104,7 @@ public class WorkingWithArrays {
         System.out.println("Сумма элементов = " + sum);
     }
 
-    private static void task3(){
+    private static void task3() {
         while (true) {
             System.out.print("Введите число (0 - выход из программы): ");
             Scanner scanner = new Scanner(System.in);
@@ -110,6 +126,113 @@ public class WorkingWithArrays {
             else
                 System.out.println("Число не простое");
             continue;
+        }
+    }
+
+    private static void task5() {
+        int[] mas = new int[4];
+
+        for (int i = 0; i < mas.length; i++) {
+            mas[i] = (int) (Math.random() * 90) + 10;
+        }
+        System.out.println(Arrays.toString(mas));
+
+        boolean flag = true;
+        for (int i = 1; i < mas.length; i++) {
+            if (mas[i] <= mas[i - 1]) {
+                flag = false;
+                break;
+            }
+        }
+        if (flag) {
+            System.out.println("Массив является строго возрастающей последовательностью");
+        } else {
+            System.out.println("Массив не является строго возрастающей последовательностью");
+        }
+    }
+
+    private static void task6() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите размер массива: ");
+        int n = scanner.nextInt();
+
+        char mas[][] = new char[n][n];
+        int i, j;
+
+        for (i = 0; i < mas.length / 2 + 1; i++) {
+            for (j = 0; j < mas[i].length; j++) {
+                if ((j < i) || (j >= (mas[i].length - i)))
+                    mas[i][j] = ' ';
+                else
+                    mas[i][j] = '*';
+
+            }
+        }
+
+        for (i = mas.length - 1; i >= mas.length / 2; i--) {
+            for (j = 0; j < mas[i].length; j++) {
+                if ((j < (mas[i].length - 1 - i)) || (j > i))
+                    mas[i][j] = ' ';
+                else
+                    mas[i][j] = '*';
+            }
+        }
+
+        for (i = 0; i < mas.length; i++) {
+            for (j = 0; j < mas[i].length; j++) {
+                System.out.print(mas[i][j]);
+            }
+            System.out.println(" ");
+        }
+    }
+
+    private static void task7() {
+        int[] mas = new int[4];
+
+        for (int i = 0; i < mas.length; i++) {
+            mas[i] = (int) (Math.random() * 90) + 10;
+        }
+        System.out.println(Arrays.toString(mas));
+
+        boolean flag = true;
+        int i = 1;
+        while (i < mas.length) {
+            if (mas[i] <= mas[i - 1]) {
+                flag = false;
+                break;
+            }
+            i++;
+        }
+
+        if (flag) {
+            System.out.println("Массив является строго возрастающей последовательностью");
+        } else {
+            System.out.println("Массив не является строго возрастающей последовательностью");
+        }
+    }
+
+    private static void task8() {
+        int[] mas = new int[4];
+
+        for (int i = 0; i < mas.length; i++) {
+            mas[i] = (int) (Math.random() * 90) + 10;
+        }
+        System.out.println(Arrays.toString(mas));
+
+        boolean flag = true;
+        int i = 1;
+        do {
+            if (mas[i] <= mas[i - 1]) {
+                flag = false;
+                break;
+            }
+            i++;
+        } while (i < mas.length);
+
+        if (flag) {
+            System.out.println("Массив является строго возрастающей последовательностью");
+        } else {
+            System.out.println("Массив не является строго возрастающей последовательностью");
         }
     }
 }
