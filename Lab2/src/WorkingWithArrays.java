@@ -31,6 +31,9 @@ public class WorkingWithArrays {
                 case "8":
                     task8();
                     break;
+                case "9":
+                    task9();
+                    break;
                 default:
                     System.out.println("Неизвестный параметр");
             }
@@ -42,6 +45,7 @@ public class WorkingWithArrays {
         //task6();
         //task7();
         //task8();
+        task9();
     }
 
     private static void task1() {
@@ -215,7 +219,7 @@ public class WorkingWithArrays {
         int[] mas = new int[4];
 
         for (int i = 0; i < mas.length; i++) {
-            mas[i] = (int) (Math.random() * 90) + 10;
+            mas[i] = (int) (random() * 90) + 10;
         }
         System.out.println(Arrays.toString(mas));
 
@@ -234,5 +238,17 @@ public class WorkingWithArrays {
         } else {
             System.out.println("Массив не является строго возрастающей последовательностью");
         }
+    }
+
+    private static void task9(){
+        String card[] = {"Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Jack","Queen","King","Ace"};
+        String suit[] = {"Hearts","Spades","Clubs","Diamonds"};
+
+        int randomCard =   (int) (random() * 13);
+        int randomSuit =   (int) (random() * 4);
+
+        System.out.println("Your card is:");
+        System.out.println(card[randomCard] + " of " + suit[randomSuit]);
+
     }
 }
