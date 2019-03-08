@@ -20,6 +20,9 @@ public class WorkingWithArrays {
                 case "3":
                     task3();
                     break;
+                case "4":
+                    task4();
+                    break;
                 case "5":
                     task5();
                     break;
@@ -51,6 +54,9 @@ public class WorkingWithArrays {
         //task8();
         //task9();
         //task10();
+    }
+
+    private static void task4() {
     }
 
     private static void task1() {
