@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 import static java.lang.Math.*;
@@ -34,6 +35,9 @@ public class WorkingWithArrays {
                 case "9":
                     task9();
                     break;
+                case "10":
+                    task10();
+                    break;
                 default:
                     System.out.println("Неизвестный параметр");
             }
@@ -45,7 +49,8 @@ public class WorkingWithArrays {
         //task6();
         //task7();
         //task8();
-        task9();
+        //task9();
+        //task10();
     }
 
     private static void task1() {
@@ -92,8 +97,8 @@ public class WorkingWithArrays {
             }
         }
         System.out.println("Минимальный элемент: " + min);
-        int startValue = 0;
-        int endValue = 0;
+        int startValue;
+        int endValue;
         if (minPosition < maxPosition) {
             startValue = minPosition + 1;
             endValue = maxPosition;
@@ -129,7 +134,6 @@ public class WorkingWithArrays {
                 System.out.println("Число простое");
             else
                 System.out.println("Число не простое");
-            continue;
         }
     }
 
@@ -240,15 +244,38 @@ public class WorkingWithArrays {
         }
     }
 
-    private static void task9(){
-        String card[] = {"Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Jack","Queen","King","Ace"};
-        String suit[] = {"Hearts","Spades","Clubs","Diamonds"};
+    private static void task9() {
+        String card[] = {"Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"};
+        String suit[] = {"Hearts", "Spades", "Clubs", "Diamonds"};
 
-        int randomCard =   (int) (random() * 13);
-        int randomSuit =   (int) (random() * 4);
+        int randomCard = (int) (random() * 13);
+        int randomSuit = (int) (random() * 4);
 
         System.out.println("Your card is:");
         System.out.println(card[randomCard] + " of " + suit[randomSuit]);
 
+    }
+
+    private static void task10() {
+        String card[] = {"Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"};
+        String rank[] = {"Hearts", "Spades", "Clubs", "Diamonds"};
+
+        String allCards[] = new String[52];
+        for (int i = 0, k = 0; i < rank.length; i++, k += 13) {
+            for (int j = 0; j < card.length; j++) {
+                allCards[k + j] = card[j] + " of " + rank[i];
+            }
+        }
+
+        Random random = new Random();
+        for (int i = 0; i < allCards.length; i++) {
+            int j = random.nextInt(52);
+            String temp = allCards[i];
+            allCards[i] = allCards[j];
+            allCards[j] = temp;
+        }
+        for (String s : allCards) {
+            System.out.println(s);
+        }
     }
 }
