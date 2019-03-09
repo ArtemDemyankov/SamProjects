@@ -47,82 +47,6 @@ public class WorkingWithArrays {
         }
     }
 
-    private static void task4(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Введите количество строк: ");
-        int lines = scanner.nextInt();
-        System.out.print("Введите количество столбцов: ");
-        int columns = scanner.nextInt();
-        int[][] mas = new int[lines][columns];
-        int find = Integer.parseInt(args[1]);
-        int delta = Integer.parseInt(args[2]);
-
-        for (int i = 0; i < lines; i++) {
-            for (int j = 0; j < columns; j++) {
-                mas[i][j] = (int) (random() * 5);
-            }
-        }
-
-        for (int[] m : mas) {
-            for (int n : m)
-                System.out.print(n + "\t");
-            System.out.println();
-        }
-
-        System.out.println("-- Задание a --");
-
-        int findLine = 0;
-        int findColumn = 0;
-        for (int i = 0; i < lines; i++) {
-            boolean flag = false;
-            for (int j = 0; j < columns; j++) {
-                if (mas[i][j] == find) {
-                    flag = true;
-                    findLine = i;
-                    findColumn = j;
-                    break;
-                }
-            }
-            if (flag)
-                System.out.println("Первое совпадение в " + (i + 1) + "-й строке: [" + findLine + "," + findColumn + "]");
-            else
-                System.out.println("В " + (i + 1) + "-й строке совпадений не найдено");
-        }
-
-        System.out.println("-- Задание b --");
-
-        int iter = 0;
-        boolean flag = false;
-        loop:
-        for (int i = 0; i < lines; i++) {
-            for (int j = 0; j < columns; j++) {
-                iter++;
-                if (mas[i][j] == find) {
-                    flag = true;
-                    findLine = i;
-                    findColumn = j;
-                    break loop;
-                }
-            }
-        }
-        if (flag) {
-            System.out.println("Первое совпадение: [" + findLine + "," + findColumn + "]");
-            System.out.println("Количество итераций: " + iter);
-        } else
-            System.out.println("Совпадений не найдено");
-
-        System.out.println("-- Задание c --");
-
-        int kol = 0;
-        for (int i = 0; i < lines; i++)
-            for (int j = 0; j < columns; j++) {
-                if ((mas[i][j] >= find - delta) && (mas[i][j] <= find + delta))
-                    continue;
-                kol++;
-            }
-        System.out.println("Количество элементов не попадающих в интервал: " + kol);
-    }
-
     private static void task1() {
         int array[] = new int[100];
         for (int number = 13, index = 0; index < 100; number++) {
@@ -205,6 +129,82 @@ public class WorkingWithArrays {
             else
                 System.out.println("Число не простое");
         }
+    }
+
+    private static void task4(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите количество строк: ");
+        int lines = scanner.nextInt();
+        System.out.print("Введите количество столбцов: ");
+        int columns = scanner.nextInt();
+        int[][] mas = new int[lines][columns];
+        int find = Integer.parseInt(args[1]);
+        int delta = Integer.parseInt(args[2]);
+
+        for (int i = 0; i < lines; i++) {
+            for (int j = 0; j < columns; j++) {
+                mas[i][j] = (int) (random() * 5);
+            }
+        }
+
+        for (int[] m : mas) {
+            for (int n : m)
+                System.out.print(n + "\t");
+            System.out.println();
+        }
+
+        System.out.println("-- Задание a --");
+
+        int findLine = 0;
+        int findColumn = 0;
+        for (int i = 0; i < lines; i++) {
+            boolean flag = false;
+            for (int j = 0; j < columns; j++) {
+                if (mas[i][j] == find) {
+                    flag = true;
+                    findLine = i;
+                    findColumn = j;
+                    break;
+                }
+            }
+            if (flag)
+                System.out.println("Первое совпадение в " + (i + 1) + "-й строке: [" + findLine + "," + findColumn + "]");
+            else
+                System.out.println("В " + (i + 1) + "-й строке совпадений не найдено");
+        }
+
+        System.out.println("-- Задание b --");
+
+        int iter = 0;
+        boolean flag = false;
+        loop:
+        for (int i = 0; i < lines; i++) {
+            for (int j = 0; j < columns; j++) {
+                iter++;
+                if (mas[i][j] == find) {
+                    flag = true;
+                    findLine = i;
+                    findColumn = j;
+                    break loop;
+                }
+            }
+        }
+        if (flag) {
+            System.out.println("Первое совпадение: [" + findLine + "," + findColumn + "]");
+            System.out.println("Количество итераций: " + iter);
+        } else
+            System.out.println("Совпадений не найдено");
+
+        System.out.println("-- Задание c --");
+
+        int kol = 0;
+        for (int i = 0; i < lines; i++)
+            for (int j = 0; j < columns; j++) {
+                if ((mas[i][j] >= find - delta) && (mas[i][j] <= find + delta))
+                    continue;
+                kol++;
+            }
+        System.out.println("Количество элементов не попадающих в интервал: " + kol);
     }
 
     private static void task5() {
