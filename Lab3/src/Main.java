@@ -1,10 +1,12 @@
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
 import static task1.BELARUS.*;
 import static task2.Task2.*;
+import task3.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -21,20 +23,24 @@ public class Main {
                 case 2:
                     task2();
                     break;
+                case 3:
+                    task3();
+                    break;
                 default:
                     System.out.println("Ошибка ввода!");
             }
-            continue;
         }
     }
 
-    public static void task1() {
+
+
+    private static void task1() {
         System.out.println(shortInfo());
         System.out.println();
         System.out.println(fullInfo());
     }
 
-    public static void task2() {
+    private static void task2() {
         Scanner scanner;
         System.out.print("Введите число: ");
         scanner = new Scanner(System.in);
@@ -67,6 +73,52 @@ public class Main {
             }
         }
         System.out.println(Arrays.toString(linearize(a)));
+    }
+
+    private static void task3() {
+        ArrayList<Student> students1 = new ArrayList<>();
+        ArrayList<Student> students2 = new ArrayList<>();
+        ArrayList<Group> groups = new ArrayList<>();
+        ArrayList<Department> departments = new ArrayList<>();
+
+        students1.add(new Student("Artem", "Demyankov", "+375447902566"));
+        students1.add(new Student("Pasha", "Tekhnik", "+375294343994"));
+        students1.add(new Student("Lena", "Voytova", "+375290438245"));
+        students2.add(new Student("Nikita", "Kruk", "+375448547865"));
+        students2.add(new Student("Oleg", "Lisitskiy", "+375294750238"));
+        students2.add(new Student("Masha", "Antipenko", "+375294048672"));
+
+        groups.add(new Group(610101));
+        groups.add(new Group(610102));
+
+        departments.add(new Department("FCAD"));
+
+        students1.get(0).setGroup(groups.get(0));
+        students1.get(1).setGroup(groups.get(0));
+        students1.get(2).setGroup(groups.get(0));
+        students2.get(0).setGroup(groups.get(1));
+        students2.get(1).setGroup(groups.get(1));
+        students2.get(2).setGroup(groups.get(1));
+
+        groups.get(0).setStudents(students1);
+        groups.get(1).setStudents(students2);
+        groups.get(0).setHeadman(students1.get(0));
+        groups.get(1).setHeadman(students2.get(2));
+
+        departments.get(0).setGroups(groups);
+
+        University.showAllDepartments(departments);
+        System.out.println();
+        University.showAllGroups(groups);
+        System.out.println();
+        University.showAllStudents(students1);
+        System.out.println();
+        University.showAllStudents(students2);
+        System.out.println();
+        University.showAllHeadmans(groups);
+        System.out.println();
+        ArrayList<Student> foundStudents = University.searchStudent(students1, "Demyankov");
+        University.showAllStudents(foundStudents);
     }
 }
 
