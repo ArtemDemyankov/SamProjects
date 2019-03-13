@@ -6,8 +6,10 @@ import java.util.Scanner;
 
 import static task1.BELARUS.*;
 import static task2.Task2.*;
+
 import task3.*;
 import task4.*;
+import task5.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -29,6 +31,9 @@ public class Main {
                     break;
                 case 4:
                     task4();
+                    break;
+                case 5:
+                    task5();
                     break;
                 default:
                     System.out.println("Ошибка ввода!");
@@ -138,6 +143,15 @@ public class Main {
         library.showNumOfBooks();
         library.showNumOfAuthors();
         library.showBooksForPeriod(1832, 1866);
+    }
+
+    private static void task5() {
+        Time time1 = new Time(5421);
+        time1.showTime();
+        System.out.println("Всего секунд: " + time1.allSeconds());
+        Time time2 = new Time(2, 39, 40);
+        time2.showTime();
+        System.out.println("Всего секунд: " + time2.allSeconds());
     }
 }
 
