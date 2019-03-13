@@ -7,6 +7,7 @@ import java.util.Scanner;
 import static task1.BELARUS.*;
 import static task2.Task2.*;
 import task3.*;
+import task4.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -26,13 +27,14 @@ public class Main {
                 case 3:
                     task3();
                     break;
+                case 4:
+                    task4();
+                    break;
                 default:
                     System.out.println("Ошибка ввода!");
             }
         }
     }
-
-
 
     private static void task1() {
         System.out.println(shortInfo());
@@ -119,6 +121,23 @@ public class Main {
         System.out.println();
         ArrayList<Student> foundStudents = University.searchStudent(students1, "Demyankov");
         University.showAllStudents(foundStudents);
+    }
+
+    private static void task4() {
+        ArrayList<Book> books = new ArrayList<>();
+
+        books.add(new Book("Пушкин", 1833, "Евгений Онегин"));
+        books.add(new Book("Пушкин", 1831, "Борис Годунов"));
+        books.add(new Book("Достоевский", 1866, "Преступление и наказание"));
+        books.add(new Book("Достоевский", 1879, "Братья Карамазовы"));
+        books.add(new Book("Гоголь", 1836, "Ревизор"));
+
+        Library library = new Library("Национальная библиотека Беларуси", "Независимости 116");
+        library.setBooks(books);
+
+        library.showNumOfBooks();
+        library.showNumOfAuthors();
+        library.showBooksForPeriod(1832, 1866);
     }
 }
 
