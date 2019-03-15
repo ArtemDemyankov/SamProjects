@@ -10,6 +10,7 @@ import static task2.Task2.*;
 import task3.*;
 import task4.*;
 import task5.*;
+import task6.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -34,6 +35,9 @@ public class Main {
                     break;
                 case 5:
                     task5();
+                    break;
+                case 6:
+                    task6();
                     break;
                 default:
                     System.out.println("Ошибка ввода!");
@@ -152,6 +156,12 @@ public class Main {
         Time time2 = new Time(2, 39, 40);
         time2.showTime();
         System.out.println("Всего секунд: " + time2.allSeconds());
+    }
+
+    private static void task6() {
+        ATM atm = new ATM(40, 20, 10);
+        atm.addMoney(10, 5, 4);
+        atm.withdrawMoney(1370);
     }
 }
 
