@@ -2,6 +2,7 @@ import task1.*;
 import task2.*;
 import task3.*;
 import task4.*;
+import task5.*;
 
 import java.util.Scanner;
 
@@ -26,10 +27,21 @@ public class Main {
                 case 4:
                     task4();
                     break;
+                case 5:
+                    task5();
+                    break;
                 default:
                     System.out.println("Неверный номер!");
             }
         }
+    }
+
+    private static void task5() {
+        Student st1 = new Student("Artem", 20, 9.5);
+        Student st2 = new Student("Nikita", 18, 7.2);
+
+        StudentComparator.RESULT.log("Information st1:", st1);
+        System.out.println(StudentComparator.AGE.compare(st1, st2));
     }
 
     private static void task4() {
